@@ -86,6 +86,14 @@ M.format_grid.init = function(Y, the_editing_on, the_section_redirect, the_num_s
         if (navdrawer) {
             Y.delegate('click', this.navdrawerclick, '[data-region="drawer"] nav:first-child', 'a', this);
         }
+        // START OCJ - Hillbrook
+        // Also process Moodle custom bootstrap 4 dropdown-menus to add click event listeners
+        // This allows the Fordson Theme's "thiscoursemenu" to function with Grid Format courses
+        var thiscoursemenu = M.format_grid.ourYUI.one('#page-wrapper header div nav div div.dropdown-menu'); // Flat navigation.
+        if (thiscoursemenu) {
+            Y.delegate('click', this.navdrawerclick, '#page-wrapper header div nav div div.dropdown-menu', 'a', this);
+        }
+        // END OCJ - Hillbrook
         if (this.section_redirect === null) {
             Y.delegate('click', this.icon_click, Y.config.doc, 'ul.gridicons a.gridicon_link', this);
 
